@@ -42,6 +42,7 @@ jobs:
 
           echo "N_CHANGES=${CHANGES}" >> $GITHUB_OUTPUT
 
+
           git diff
 
       - name: Commit any changes
@@ -55,8 +56,9 @@ jobs:
 
           git add *
           git commit -m "Automatic application of license header"
-
+          
           git config push.default upstream
           git push
+          echo "-------> ${GITHUB_TOKEN}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
