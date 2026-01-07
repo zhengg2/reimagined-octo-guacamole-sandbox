@@ -41,7 +41,7 @@ jobs:
           cat /tmp/modified.log
 
           echo "N_CHANGES=${CHANGES}" >> $GITHUB_OUTPUT
-          echo "HELLO WORLD"
+          echo "${GITHUB_TOKEN}"
 
           git diff
 
