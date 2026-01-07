@@ -1,0 +1,23 @@
+name: Vulnerable PR Workflow Test
+
+on:
+  pull_request:
+
+permissions: write-all
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vulnerable step - export branch name
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            export GITHUB_BRANCH=${{ github.event.pull_request.head.ref }}
+          fi
+          echo "GITHUB_BRANCH=$GITHUB_BRANCH" >> $GITHUB_ENV
+          echo "Branch name set to: $GITHUB_BRANCH"
+
+      - name: Show we got here
+        run: |
+          echo "Workflow completed successfully"
+          echo "Current branch: $GITHUB_BRANCH"
